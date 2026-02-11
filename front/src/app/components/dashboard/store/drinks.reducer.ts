@@ -36,5 +36,38 @@ export const drinksFeature = createFeature({
       loading: false,
       error,
     })),
+    on(DrinksActions.addDrinkSuccess, (state, { drink }) => ({
+      ...state,
+      drinks: [...state.drinks, drink],
+      total: state.total + 1,
+    })),
+    on(DrinksActions.addDrinkFailure, (state, { error }) => ({
+      ...state,
+      error,
+    })),
+    on(DrinksActions.addReviewSuccess, (state, { drinkId }) => ({
+      ...state,
+      drinks: state.drinks.map((d) =>
+        d.id === drinkId
+          ? { ...d, reviewCount: d.reviewCount + 1 }
+          : d,
+      ),
+    })),
+    on(DrinksActions.addReviewFailure, (state, { error }) => ({
+      ...state,
+      error,
+    })),
+    on(DrinksActions.uploadPictureSuccess, (state, { drinkId, picture }) => ({
+      ...state,
+      drinks: state.drinks.map((d) =>
+        d.id === drinkId
+          ? { ...d, Pictures: [...d.Pictures, picture] }
+          : d,
+      ),
+    })),
+    on(DrinksActions.uploadPictureFailure, (state, { error }) => ({
+      ...state,
+      error,
+    })),
   ),
 });

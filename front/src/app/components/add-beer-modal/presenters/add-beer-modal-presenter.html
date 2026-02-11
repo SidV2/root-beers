@@ -1,0 +1,46 @@
+<div class="add-bear-modal-wrapper">
+  <h2 mat-dialog-title>Add Root Beer</h2>
+
+  <div class="content-wrapper">
+    <ng-container [ngTemplateOutlet]="dialogContent" />
+  </div>
+
+  <div class="actions-cta-wrapper">
+    <ng-container [ngTemplateOutlet]="actionsCtaContent" />
+  </div>
+
+</div>
+
+
+
+<!--Ne templates-->
+
+<ng-template #dialogContent>
+  <mat-dialog-content>
+  <form [formGroup]="addBeerForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="e.g. Barq's Root Beer" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        rows="4"
+        placeholder="Describe the root beer..."
+      ></textarea>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+</ng-template>
+
+<ng-template #actionsCtaContent>
+    <mat-dialog-actions >
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="addBeerForm.invalid">
+      Add
+    </button>
+  </mat-dialog-actions>
+</ng-template>

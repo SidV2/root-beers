@@ -20,3 +20,45 @@ export const loadDrinks$ = createEffect(
     ),
   { functional: true },
 );
+
+export const addDrink$ = createEffect(
+  (actions$ = inject(Actions), drinksService = inject(DrinksService)) =>
+    actions$.pipe(
+      ofType(DrinksActions.addDrink),
+      switchMap(({ drink }) =>
+        drinksService.createDrink(drink).pipe(
+          map((newDrink) => DrinksActions.addDrinkSuccess({ drink: newDrink })),
+          catchError((error) => of(DrinksActions.addDrinkFailure({ error: error.message }))),
+        ),
+      ),
+    ),
+  { functional: true },
+);
+
+export const addReview$ = createEffect(
+  (actions$ = inject(Actions), drinksService = inject(DrinksService)) =>
+    actions$.pipe(
+      ofType(DrinksActions.addReview),
+      switchMap(({ drinkId, review }) =>
+        drinksService.createReview(drinkId, review).pipe(
+          map((newReview) => DrinksActions.addReviewSuccess({ drinkId, review: newReview })),
+          catchError((error) => of(DrinksActions.addReviewFailure({ error: error.message }))),
+        ),
+      ),
+    ),
+  { functional: true },
+);
+
+export const uploadPicture$ = createEffect(
+  (actions$ = inject(Actions), drinksService = inject(DrinksService)) =>
+    actions$.pipe(
+      ofType(DrinksActions.uploadPicture),
+      switchMap(({ drinkId, file }) =>
+        drinksService.uploadPicture(drinkId, file).pipe(
+          map((picture) => DrinksActions.uploadPictureSuccess({ drinkId, picture })),
+          catchError((error) => of(DrinksActions.uploadPictureFailure({ error: error.message }))),
+        ),
+      ),
+    ),
+  { functional: true },
+);

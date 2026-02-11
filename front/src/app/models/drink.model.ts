@@ -15,11 +15,25 @@ export interface Drink {
   updatedAt: string;
   reviewCount: number;
   reviewAverageRating: number;
-  pictures: Picture[];
+  Pictures: Picture[];
 }
 
 export interface DrinkResponse {
   items: Drink[];
+  total: number;
+}
+
+export interface Review {
+  id: number;
+  user_name: string;
+  description: string;
+  rating: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ReviewResponse {
+  items: Review[];
   total: number;
 }
 

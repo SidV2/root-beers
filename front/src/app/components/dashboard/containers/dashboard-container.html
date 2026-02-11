@@ -3,4 +3,7 @@
     [total]="total$ | async"
     [loading]="loading$ | async"
     [error]="error$ | async"
+    (openAddBeerDialogEvent)="openAddBeerDialog()"
+    (addReviewEvent)="openAddReviewDialog($event)"
+    (addImageEvent)="openAddImageDialog($event)"
 />

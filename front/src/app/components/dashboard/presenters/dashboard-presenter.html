@@ -10,7 +10,11 @@
   } @else {
     <div class="card-container">
       @for (drink of drinks(); track drink.id) {
-        <app-beer-card [drink]="drink" />
+        <app-beer-card
+          [drink]="drink"
+          (addReview)="addReviewEvent.emit($event)"
+          (addImage)="addImageEvent.emit($event)"
+        />
       } @empty {
         <p>No drinks found.</p>
       }
@@ -38,6 +42,6 @@
 
 <ng-template #addBearButtonTmpl>
   <div class="add-bear-btn">
-    <button matButton="elevated">Basic</button>
+    <button matButton="elevated" (click)="openAddBeerDialog()">Add bear</button>
   </div>
 </ng-template>

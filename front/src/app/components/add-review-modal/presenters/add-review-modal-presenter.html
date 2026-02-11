@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Add Review</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Your Name</mat-label>
+      <input matInput formControlName="user_name" placeholder="e.g. John Doe" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Review</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        rows="4"
+        placeholder="What did you think?"
+      ></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Rating (1-5)</mat-label>
+      <input matInput type="number" formControlName="rating" min="1" max="5" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="form.invalid">
+    Submit
+  </button>
+</mat-dialog-actions>

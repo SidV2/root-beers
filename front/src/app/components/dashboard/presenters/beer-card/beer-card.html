@@ -1,10 +1,10 @@
 <div class="card-wrapper">
   @let drinkAlias = drink();
   <mat-card class="beer-card">
-  @if (drinkAlias && drinkAlias.pictures && drinkAlias.pictures.length) {
+  @if (drinkAlias && drinkAlias.Pictures && drinkAlias.Pictures.length) {
     <img
       mat-card-image
-      [src]="baseUrl + drinkAlias?.pictures?.[0]?.path"
+      [src]="baseUrl + drinkAlias?.Pictures?.[0]?.path"
       [alt]="drinkAlias?.name"
     />
   }
@@ -17,6 +17,13 @@
   <mat-card-content>
     <p>{{ drinkAlias?.description }}</p>
   </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button (click)="onAddReview()">
+      <mat-icon>rate_review</mat-icon> Add review
+    </button>
+    <button mat-button (click)="onAddImage()">
+      <mat-icon>add_photo_alternate</mat-icon> Add image
+    </button>
+  </mat-card-actions>
 </mat-card>
 </div>
-

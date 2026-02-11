@@ -1,0 +1,13 @@
+.upload-area {
+  min-width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 0;
+}
+
+.selected-file {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
