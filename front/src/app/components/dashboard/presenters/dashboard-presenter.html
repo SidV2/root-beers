@@ -1,3 +1,43 @@
 <div class="dashboard-container">
-    Welcome to Root beers Application
+  @if (loading()) {
+    <ng-container
+      [ngTemplateOutlet]="loadingTmpl"
+    ></ng-container>
+  } @else if (error()) {
+    <ng-container
+      [ngTemplateOutlet]="errorTmpl"
+    ></ng-container>
+  } @else {
+    <div class="card-container">
+      @for (drink of drinks(); track drink.id) {
+        <app-beer-card [drink]="drink" />
+      } @empty {
+        <p>No drinks found.</p>
+      }
+    </div>
+  }
+  <ng-container [ngTemplateOutlet]="addBearButtonTmpl" />
 </div>
+
+
+
+<!--Ng templates -->
+<ng-template #loadingTmpl>
+  <div class="loading">
+    <mat-spinner diameter="48" />
+  </div>
+</ng-template>
+
+
+<ng-template #errorTmpl>
+  <div class="error">
+    <p>{{ error() }}</p>
+  </div>
+</ng-template>
+
+
+<ng-template #addBearButtonTmpl>
+  <div class="add-bear-btn">
+    <button matButton="elevated">Basic</button>
+  </div>
+</ng-template>

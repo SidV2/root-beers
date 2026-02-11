@@ -1,0 +1,22 @@
+<div class="card-wrapper">
+  @let drinkAlias = drink();
+  <mat-card class="beer-card">
+  @if (drinkAlias && drinkAlias.pictures && drinkAlias.pictures.length) {
+    <img
+      mat-card-image
+      [src]="baseUrl + drinkAlias?.pictures?.[0]?.path"
+      [alt]="drinkAlias?.name"
+    />
+  }
+  <mat-card-header>
+    <mat-card-title>{{ drinkAlias?.name }}</mat-card-title>
+    <mat-card-subtitle>
+      {{ drinkAlias?.reviewAverageRating | number: '1.1-1' }} ★ · {{ drinkAlias?.reviewCount }} reviews
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ drinkAlias?.description }}</p>
+  </mat-card-content>
+</mat-card>
+</div>
+
