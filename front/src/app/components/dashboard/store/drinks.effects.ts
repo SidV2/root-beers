@@ -21,6 +21,22 @@ export const loadDrinks$ = createEffect(
   { functional: true },
 );
 
+export const loadMoreDrinks$ = createEffect(
+  (actions$ = inject(Actions), drinksService = inject(DrinksService)) =>
+    actions$.pipe(
+      ofType(DrinksActions.loadMoreDrinks),
+      switchMap(({ query }) =>
+        drinksService.getDrinks(query).pipe(
+          map((response) =>
+            DrinksActions.loadMoreDrinksSuccess({ drinks: response.items, total: response.total }),
+          ),
+          catchError((error) => of(DrinksActions.loadDrinksFailure({ error: error.message }))),
+        ),
+      ),
+    ),
+  { functional: true },
+);
+
 export const addDrink$ = createEffect(
   (actions$ = inject(Actions), drinksService = inject(DrinksService)) =>
     actions$.pipe(

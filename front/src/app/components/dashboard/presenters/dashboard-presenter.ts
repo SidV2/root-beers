@@ -17,12 +17,22 @@ export class DashboardPresenter {
   total = input<number | null>(0);
   loading = input<boolean | null>(false);
   error = input<string | null>(null);
+  pageNumber = input<number>(1);
 
   openAddBeerDialogEvent = output<void>();
   addReviewEvent = output<number>();
   addImageEvent = output<number>();
+  fetchMoreResultsEvent = output<void>();
+
+  public ngOnInit() {
+    console.log(this);
+  }
 
   openAddBeerDialog() {
     this.openAddBeerDialogEvent.emit();
+  }
+
+  fetchMoreResults() {
+    this.fetchMoreResultsEvent.emit();
   }
 }

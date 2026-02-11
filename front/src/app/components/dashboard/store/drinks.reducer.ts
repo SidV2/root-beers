@@ -36,10 +36,15 @@ export const drinksFeature = createFeature({
       loading: false,
       error,
     })),
-    on(DrinksActions.addDrinkSuccess, (state, { drink }) => ({
+    on(DrinksActions.loadMoreDrinks, (state) => ({
       ...state,
-      drinks: [...state.drinks, drink],
-      total: state.total + 1,
+      error: null,
+    })),
+    on(DrinksActions.loadMoreDrinksSuccess, (state, { drinks, total }) => ({
+      ...state,
+      drinks: [...state.drinks, ...drinks],
+      total,
+      loading: false,
     })),
     on(DrinksActions.addDrinkFailure, (state, { error }) => ({
       ...state,

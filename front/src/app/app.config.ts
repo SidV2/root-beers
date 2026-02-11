@@ -7,7 +7,8 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
-import { reducers } from './store';
+import { drinksFeature } from './components/dashboard/store/drinks.reducer';
+import * as DrinksEffects from './components/dashboard/store/drinks.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,8 +16,8 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideHttpClient(),
     provideRouter(routes),
-    provideStore(reducers),
-    provideEffects(),
+    provideStore({ [drinksFeature.name]: drinksFeature.reducer }),
+    provideEffects(DrinksEffects),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
   ],
 };

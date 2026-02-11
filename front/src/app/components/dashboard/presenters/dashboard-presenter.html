@@ -1,4 +1,6 @@
 <div class="dashboard-container">
+  @let drinkItems = drinks();
+  @let totalNoOfDrinks = total();
   @if (loading()) {
     <ng-container
       [ngTemplateOutlet]="loadingTmpl"
@@ -9,7 +11,7 @@
     ></ng-container>
   } @else {
     <div class="card-container">
-      @for (drink of drinks(); track drink.id) {
+      @for (drink of drinkItems; track drink.id) {
         <app-beer-card
           [drink]="drink"
           (addReview)="addReviewEvent.emit($event)"
@@ -20,7 +22,14 @@
       }
     </div>
   }
-  <ng-container [ngTemplateOutlet]="addBearButtonTmpl" />
+
+  <div class="button-wrappers">
+    <ng-container [ngTemplateOutlet]="addBearButtonTmpl" />
+    @if(totalNoOfDrinks && totalNoOfDrinks > pageNumber() * 10) {
+      <ng-container [ngTemplateOutlet]="showMoreBtnTempl" />
+    }
+  </div>
+
 </div>
 
 
@@ -43,5 +52,11 @@
 <ng-template #addBearButtonTmpl>
   <div class="add-bear-btn">
     <button matButton="elevated" (click)="openAddBeerDialog()">Add bear</button>
+  </div>
+</ng-template>
+
+<ng-template #showMoreBtnTempl>
+  <div class="show-more-button-wrapper">
+    <button matButton="elevated" (click)="fetchMoreResults()">Show more results</button>
   </div>
 </ng-template>

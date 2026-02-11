@@ -2,8 +2,10 @@
     [drinks]="drinks$ | async"
     [total]="total$ | async"
     [loading]="loading$ | async"
+    [pageNumber]="pageNumber"
     [error]="error$ | async"
-    (openAddBeerDialogEvent)="openAddBeerDialog()"
+    (openAddBeerDialogEvent)="openAddBeerPage()"
     (addReviewEvent)="openAddReviewDialog($event)"
     (addImageEvent)="openAddImageDialog($event)"
+    (fetchMoreResultsEvent)="fetchMoreResults()"
 />
