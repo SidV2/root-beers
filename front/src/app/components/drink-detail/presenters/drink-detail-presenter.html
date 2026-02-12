@@ -1,33 +1,35 @@
+@let drinkValue = drink();
 @if (loading()) {
+  
   <div class="loading">
     <mat-spinner diameter="48" />
   </div>
-} @else if (drink(); as d) {
+} @else if (drinkValue) {
   <div class="detail-page">
     <button mat-button class="back-btn" (click)="goBack.emit()">
       <mat-icon>arrow_back</mat-icon> Back
     </button>
 
     <div class="detail-card">
-      @if (d.Pictures && d.Pictures.length) {
+      @if (drinkValue.Pictures && drinkValue.Pictures.length) {
         <div class="carousel-section">
-          <app-carousel [pictures]="d.Pictures" />
+          <app-carousel [pictures]="drinkValue.Pictures" />
         </div>
       }
 
       <div class="detail-content">
-        <h1 class="drink-name">{{ d.name }}</h1>
+        <h1 class="drink-name">{{ drinkValue.name }}</h1>
         <div class="meta">
-          <span class="rating-badge">{{ d.reviewAverageRating | number: '1.1-1' }} ★</span>
-          <span class="review-count">{{ d.reviewCount }} reviews</span>
+          <span class="rating-badge">{{ drinkValue.reviewAverageRating | number: '1.1-1' }} ★</span>
+          <span class="review-count">{{ drinkValue.reviewCount }} reviews</span>
         </div>
         <div class="divider"></div>
-        <p class="description">{{ d.description }}</p>
+        <p class="description">{{ drinkValue.description }}</p>
       </div>
+    </div>
 
-      <div class="reviews-section">
-        <app-review-list [drinkId]="d.id" />
-      </div>
+    <div class="reviews-section">
+      <app-review-list [drinkId]="drinkValue.id" />
     </div>
   </div>
 }

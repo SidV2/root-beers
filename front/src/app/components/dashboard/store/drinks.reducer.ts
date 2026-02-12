@@ -10,6 +10,7 @@ export interface DrinksState {
   selectedDrink: Drink | null;
   detailLoading: boolean;
   reviews: Review[];
+  reviewsTotal: number;
   reviewsLoading: boolean;
 }
 
@@ -21,6 +22,7 @@ export const initialState: DrinksState = {
   selectedDrink: null,
   detailLoading: false,
   reviews: [],
+  reviewsTotal: 0,
   reviewsLoading: false,
 };
 
@@ -75,15 +77,25 @@ export const drinksFeature = createFeature({
       reviews: [],
       reviewsLoading: true,
     })),
-    on(DrinksActions.loadReviewsSuccess, (state, { reviews }) => ({
+    on(DrinksActions.loadReviewsSuccess, (state, { reviews, total }) => ({
       ...state,
       reviews,
+      reviewsTotal: total,
       reviewsLoading: false,
     })),
     on(DrinksActions.loadReviewsFailure, (state, { error }) => ({
       ...state,
       reviewsLoading: false,
       error,
+    })),
+    on(DrinksActions.loadMoreReviews, (state) => ({
+      ...state,
+      error: null,
+    })),
+    on(DrinksActions.loadMoreReviewsSuccess, (state, { reviews, total }) => ({
+      ...state,
+      reviews: [...state.reviews, ...reviews],
+      reviewsTotal: total,
     })),
     on(DrinksActions.addReviewSuccess, (state, { drinkId, review }) => ({
       ...state,

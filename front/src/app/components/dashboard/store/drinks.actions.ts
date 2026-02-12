@@ -18,9 +18,11 @@ export const DrinksActions = createActionGroup({
     'Add Drink Success': props<{ drink: Drink }>(),
     'Add Drink Failure': props<{ error: string }>(),
 
-    'Load Reviews': props<{ drinkId: number }>(),
-    'Load Reviews Success': props<{ reviews: Review[] }>(),
+    'Load Reviews': props<{ drinkId: number; offset: number; length: number }>(),
+    'Load Reviews Success': props<{ reviews: Review[]; total: number }>(),
     'Load Reviews Failure': props<{ error: string }>(),
+    'Load More Reviews': props<{ drinkId: number; offset: number; length: number }>(),
+    'Load More Reviews Success': props<{ reviews: Review[]; total: number }>(),
 
     'Add Review': props<{ drinkId: number; review: Partial<Review> }>(),
     'Add Review Success': props<{ drinkId: number; review: Review }>(),

@@ -2,7 +2,7 @@ import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { DrinksActions } from '../../dashboard/store/drinks.actions';
-import { selectReviews, selectReviewsLoading } from '../../dashboard/store/drinks.selectors';
+import { selectReviews, selectReviewsLoading, selectReviewsTotal } from '../../dashboard/store/drinks.selectors';
 import { ReviewListPresenter } from '../presenters/review-list-presenter';
 
 @Component({
@@ -17,9 +17,19 @@ export class ReviewListContainer implements OnInit {
   drinkId = input.required<number>();
 
   reviews$ = this.store.select(selectReviews);
+  total$ = this.store.select(selectReviewsTotal);
   loading$ = this.store.select(selectReviewsLoading);
 
+  pageNumber = 1;
+  private readonly pageSize = 5;
+
   ngOnInit(): void {
-    this.store.dispatch(DrinksActions.loadReviews({ drinkId: this.drinkId() }));
+    this.store.dispatch(DrinksActions.loadReviews({ drinkId: this.drinkId(), offset: 0, length: this.pageSize }));
+  }
+
+  fetchMoreReviews(): void {
+    this.pageNumber++;
+    const offset = (this.pageNumber - 1) * this.pageSize;
+    this.store.dispatch(DrinksActions.loadMoreReviews({ drinkId: this.drinkId(), offset, length: this.pageSize }));
   }
 }

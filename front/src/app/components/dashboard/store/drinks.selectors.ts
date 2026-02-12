@@ -17,4 +17,6 @@ export const selectDetailLoading = createSelector(selectDrinksState, (state) => 
 
 export const selectReviews = createSelector(selectDrinksState, (state) => state.reviews);
 
+export const selectReviewsTotal = createSelector(selectDrinksState, (state) => state.reviewsTotal);
+
 export const selectReviewsLoading = createSelector(selectDrinksState, (state) => state.reviewsLoading);

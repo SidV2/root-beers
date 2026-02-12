@@ -19,6 +19,12 @@
           <span class="review-date">{{ review.createdAt | date: 'mediumDate' }}</span>
         </div>
       }
+
+      @if (total() > pageNumber() * 5) {
+        <div class="show-more-wrapper">
+          <button mat-button (click)="fetchMoreReviewsEvent.emit()">Show more reviews</button>
+        </div>
+      }
     }
   </div>
 }

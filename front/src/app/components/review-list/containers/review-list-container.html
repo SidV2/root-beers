@@ -1,4 +1,7 @@
 <app-review-list-presenter
   [reviews]="(reviews$ | async) ?? []"
+  [total]="(total$ | async) ?? 0"
   [loading]="(loading$ | async) ?? true"
+  [pageNumber]="pageNumber"
+  (fetchMoreReviewsEvent)="fetchMoreReviews()"
 />
