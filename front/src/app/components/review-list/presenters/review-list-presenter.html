@@ -1,0 +1,24 @@
+@if (loading()) {
+  <div class="loading">
+    <mat-spinner diameter="32" />
+  </div>
+} @else {
+  <div class="review-list">
+    <h2 class="section-title">Reviews</h2>
+
+    @if (reviews().length === 0) {
+      <p class="empty">No reviews yet.</p>
+    } @else {
+      @for (review of reviews(); track review.id) {
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">{{ review.user_name }}</span>
+            <span class="review-rating">{{ review.rating }} <mat-icon>star</mat-icon></span>
+          </div>
+          <p class="review-body">{{ review.description }}</p>
+          <span class="review-date">{{ review.createdAt | date: 'mediumDate' }}</span>
+        </div>
+      }
+    }
+  </div>
+}

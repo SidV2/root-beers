@@ -31,8 +31,6 @@ export class DrinksService {
 
   getReviews(drinkId: number, offset?: number, length?: number): Observable<ReviewResponse> {
     let params = new HttpParams();
-    if (offset !== undefined) params = params.set('offset', String(offset));
-    if (length !== undefined) params = params.set('length', String(length));
     return this.http.get<ReviewResponse>(`${this.baseUrl}/drinks/${drinkId}/reviews`, { params });
   }
 

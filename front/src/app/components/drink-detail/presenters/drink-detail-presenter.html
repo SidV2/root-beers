@@ -24,6 +24,10 @@
         <div class="divider"></div>
         <p class="description">{{ d.description }}</p>
       </div>
+
+      <div class="reviews-section">
+        <app-review-list [drinkId]="d.id" />
+      </div>
     </div>
   </div>
 }

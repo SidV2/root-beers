@@ -1,5 +1,5 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { Drink } from '../../../models/drink.model';
+import { Drink, Review } from '../../../models/drink.model';
 import { DrinksActions } from './drinks.actions';
 
 export interface DrinksState {
@@ -9,6 +9,8 @@ export interface DrinksState {
   error: string | null;
   selectedDrink: Drink | null;
   detailLoading: boolean;
+  reviews: Review[];
+  reviewsLoading: boolean;
 }
 
 export const initialState: DrinksState = {
@@ -18,6 +20,8 @@ export const initialState: DrinksState = {
   error: null,
   selectedDrink: null,
   detailLoading: false,
+  reviews: [],
+  reviewsLoading: false,
 };
 
 export const drinksFeature = createFeature({
@@ -66,17 +70,33 @@ export const drinksFeature = createFeature({
       detailLoading: false,
       error,
     })),
+    on(DrinksActions.loadReviews, (state) => ({
+      ...state,
+      reviews: [],
+      reviewsLoading: true,
+    })),
+    on(DrinksActions.loadReviewsSuccess, (state, { reviews }) => ({
+      ...state,
+      reviews,
+      reviewsLoading: false,
+    })),
+    on(DrinksActions.loadReviewsFailure, (state, { error }) => ({
+      ...state,
+      reviewsLoading: false,
+      error,
+    })),
+    on(DrinksActions.addReviewSuccess, (state, { drinkId, review }) => ({
+      ...state,
+      reviews: [review, ...state.reviews],
+      drinks: state.drinks.map((drink) =>
+        drink.id === drinkId
+          ? { ...drink, reviewCount: drink.reviewCount + 1 }
+          : drink,
+      ),
+    })),
     on(DrinksActions.addDrinkFailure, (state, { error }) => ({
       ...state,
       error,
-    })),
-    on(DrinksActions.addReviewSuccess, (state, { drinkId }) => ({
-      ...state,
-      drinks: state.drinks.map((d) =>
-        d.id === drinkId
-          ? { ...d, reviewCount: d.reviewCount + 1 }
-          : d,
-      ),
     })),
     on(DrinksActions.addReviewFailure, (state, { error }) => ({
       ...state,

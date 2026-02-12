@@ -1,0 +1,72 @@
+@use './../../../mixins.scss' as m;
+
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: 32px 0;
+}
+
+.review-list {
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 16px;
+  }
+
+  .empty {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.45);
+    margin: 0;
+  }
+
+  .review-card {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .review-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .review-author {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a1a1a;
+  }
+
+  .review-rating {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a1a1a;
+
+    mat-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+      color: rgba(0, 0, 0, 0.45);
+    }
+  }
+
+  .review-body {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(0, 0, 0, 0.65);
+    margin: 0 0 8px;
+  }
+
+  .review-date {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.35);
+  }
+}

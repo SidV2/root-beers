@@ -79,6 +79,20 @@ export const uploadPicture$ = createEffect(
   { functional: true },
 );
 
+export const loadReviews$ = createEffect(
+  (actions$ = inject(Actions), drinksService = inject(DrinksService)) =>
+    actions$.pipe(
+      ofType(DrinksActions.loadReviews),
+      switchMap(({ drinkId }) =>
+        drinksService.getReviews(drinkId).pipe(
+          map((response) => DrinksActions.loadReviewsSuccess({ reviews: response.items })),
+          catchError((error) => of(DrinksActions.loadReviewsFailure({ error: error.message }))),
+        ),
+      ),
+    ),
+  { functional: true },
+);
+
 export const loadDrinkDetail$ = createEffect(
   (actions$ = inject(Actions), drinksService = inject(DrinksService)) =>
     actions$.pipe(

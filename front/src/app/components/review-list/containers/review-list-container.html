@@ -1,0 +1,4 @@
+<app-review-list-presenter
+  [reviews]="(reviews$ | async) ?? []"
+  [loading]="(loading$ | async) ?? true"
+/>
