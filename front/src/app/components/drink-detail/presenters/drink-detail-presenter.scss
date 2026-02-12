@@ -1,0 +1,29 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: 48px 0;
+}
+
+.detail-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+
+  button {
+    margin-bottom: 20px;
+    padding-left: 0;
+  }
+}
+
+.detail-content {
+  padding: 16px 0;
+
+  h1 {
+    margin: 0 0 8px;
+  }
+
+  .rating {
+    color: rgba(0, 0, 0, 0.6);
+    margin: 0 0 16px;
+  }
+}

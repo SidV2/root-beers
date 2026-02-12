@@ -18,12 +18,9 @@ export class BeerCard {
 
   addReview = output<number>();
   addImage = output<number>();
+  viewDetail = output<number>();
 
   readonly baseUrl: string = baseUrl;
-
-  public ngOnInit() {
-    console.log(this.drink());
-  }
 
   onAddReview(): void {
     const drinkItem = this.drink();
@@ -33,5 +30,10 @@ export class BeerCard {
   onAddImage(): void {
     const drinkItem = this.drink();
     if (drinkItem) this.addImage.emit(drinkItem.id);
+  }
+
+  onViewDetail(): void {
+    const drinkItem = this.drink();
+    if (drinkItem) this.viewDetail.emit(drinkItem.id);
   }
 }

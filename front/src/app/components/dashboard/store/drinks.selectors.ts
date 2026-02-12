@@ -10,3 +10,7 @@ export const selectDrinksTotal = createSelector(selectDrinksState, (state) => st
 export const selectDrinksLoading = createSelector(selectDrinksState, (state) => state.loading);
 
 export const selectDrinksError = createSelector(selectDrinksState, (state) => state.error);
+
+export const selectSelectedDrink = createSelector(selectDrinksState, (state) => state.selectedDrink);
+
+export const selectDetailLoading = createSelector(selectDrinksState, (state) => state.detailLoading);

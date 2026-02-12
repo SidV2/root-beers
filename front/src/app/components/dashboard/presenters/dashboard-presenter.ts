@@ -22,6 +22,7 @@ export class DashboardPresenter {
   openAddBeerDialogEvent = output<void>();
   addReviewEvent = output<number>();
   addImageEvent = output<number>();
+  viewDetailEvent = output<number>();
   fetchMoreResultsEvent = output<void>();
 
   public ngOnInit() {

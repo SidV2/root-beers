@@ -29,14 +29,6 @@ export class DrinksService {
     return this.http.post<Drink>(`${this.baseUrl}/drinks`, drink);
   }
 
-  updateDrink(id: number, drink: Partial<Drink>): Observable<Drink> {
-    return this.http.put<Drink>(`${this.baseUrl}/drinks/${id}`, drink);
-  }
-
-  deleteDrink(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/drinks/${id}`);
-  }
-
   getReviews(drinkId: number, offset?: number, length?: number): Observable<ReviewResponse> {
     let params = new HttpParams();
     if (offset !== undefined) params = params.set('offset', String(offset));

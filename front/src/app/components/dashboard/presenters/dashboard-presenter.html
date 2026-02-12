@@ -16,6 +16,7 @@
           [drink]="drink"
           (addReview)="addReviewEvent.emit($event)"
           (addImage)="addImageEvent.emit($event)"
+          (viewDetail)="viewDetailEvent.emit($event)"
         />
       } @empty {
         <p>No drinks found.</p>

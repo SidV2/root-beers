@@ -1,0 +1,19 @@
+@if (images().length) {
+  <div class="carousel">
+    <div class="carousel-viewport">
+      <img [src]="currentImage().src" [alt]="currentImage().alt" />
+    </div>
+
+    @if (images().length > 1) {
+      <div class="carousel-controls">
+        <button mat-icon-button (click)="prev()" [disabled]="!hasPrev()">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <span class="carousel-indicator">{{ currentIndex() + 1 }} / {{ images().length }}</span>
+        <button mat-icon-button (click)="next()" [disabled]="!hasNext()">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+    }
+  </div>
+}

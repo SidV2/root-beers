@@ -1,0 +1,23 @@
+@if (loading()) {
+  <div class="loading">
+    <mat-spinner diameter="48" />
+  </div>
+} @else if (drink(); as d) {
+  <div class="detail-page">
+    <button mat-button (click)="goBack.emit()">
+      <mat-icon>arrow_back</mat-icon> Back
+    </button>
+
+    @if (d.Pictures && d.Pictures.length) {
+      <app-carousel [pictures]="d.Pictures" />
+    }
+
+    <div class="detail-content">
+      <h1>{{ d.name }}</h1>
+      <p class="rating">
+        {{ d.reviewAverageRating | number: '1.1-1' }} ★ · {{ d.reviewCount }} reviews
+      </p>
+      <p class="description">{{ d.description }}</p>
+    </div>
+  </div>
+}

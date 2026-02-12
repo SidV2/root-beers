@@ -15,4 +15,11 @@ export const routes: Routes = [
         (m) => m.AddBeerModalContainer,
       ),
   },
+  {
+    path: 'drink/:id',
+    loadComponent: () =>
+      import('./components/drink-detail/containers/drink-detail-container').then(
+        (m) => m.DrinkDetailContainer,
+      ),
+  },
 ];

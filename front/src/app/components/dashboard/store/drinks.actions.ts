@@ -10,6 +10,10 @@ export const DrinksActions = createActionGroup({
     'Load More Drinks': props<{ query?: DrinkQueryParams }>(),
     'Load More Drinks Success': props<{ drinks: Drink[]; total: number }>(),
 
+    'Load Drink Detail': props<{ id: number }>(),
+    'Load Drink Detail Success': props<{ drink: Drink }>(),
+    'Load Drink Detail Failure': props<{ error: string }>(),
+
     'Add Drink': props<{ drink: Partial<Drink> }>(),
     'Add Drink Success': props<{ drink: Drink }>(),
     'Add Drink Failure': props<{ error: string }>(),

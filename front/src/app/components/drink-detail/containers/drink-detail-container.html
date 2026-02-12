@@ -1,0 +1,5 @@
+<app-drink-detail-presenter
+  [drink]="drink$ | async"
+  [loading]="(loading$ | async) ?? true"
+  (goBack)="goBack()"
+/>

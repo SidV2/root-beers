@@ -1,4 +1,4 @@
-<div class="card-wrapper">
+<div class="card-wrapper" (click)="onViewDetail()">
   @let drinkAlias = drink();
   <mat-card class="beer-card">
   @if (drinkAlias && drinkAlias.Pictures && drinkAlias.Pictures.length) {
@@ -18,10 +18,10 @@
     <p>{{ drinkAlias?.description }}</p>
   </mat-card-content>
   <mat-card-actions align="end">
-    <button mat-button (click)="onAddReview()">
+    <button mat-button (click)="onAddReview(); $event.stopPropagation()">
       <mat-icon>rate_review</mat-icon> Add review
     </button>
-    <button mat-button (click)="onAddImage()">
+    <button mat-button (click)="onAddImage(); $event.stopPropagation()">
       <mat-icon>add_photo_alternate</mat-icon> Add image
     </button>
   </mat-card-actions>

@@ -7,6 +7,8 @@ export interface DrinksState {
   total: number;
   loading: boolean;
   error: string | null;
+  selectedDrink: Drink | null;
+  detailLoading: boolean;
 }
 
 export const initialState: DrinksState = {
@@ -14,6 +16,8 @@ export const initialState: DrinksState = {
   total: 0,
   loading: false,
   error: null,
+  selectedDrink: null,
+  detailLoading: false,
 };
 
 export const drinksFeature = createFeature({
@@ -45,6 +49,22 @@ export const drinksFeature = createFeature({
       drinks: [...state.drinks, ...drinks],
       total,
       loading: false,
+    })),
+    on(DrinksActions.loadDrinkDetail, (state) => ({
+      ...state,
+      selectedDrink: null,
+      detailLoading: true,
+      error: null,
+    })),
+    on(DrinksActions.loadDrinkDetailSuccess, (state, { drink }) => ({
+      ...state,
+      selectedDrink: drink,
+      detailLoading: false,
+    })),
+    on(DrinksActions.loadDrinkDetailFailure, (state, { error }) => ({
+      ...state,
+      detailLoading: false,
+      error,
     })),
     on(DrinksActions.addDrinkFailure, (state, { error }) => ({
       ...state,

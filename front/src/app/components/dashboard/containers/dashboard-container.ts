@@ -38,6 +38,10 @@ export class DashboardContainer implements OnInit {
     );
   }
 
+  navigateToDetail(drinkId: number): void {
+    this.router.navigate(['/drink', drinkId]);
+  }
+
   openAddBeerPage(): void {
     this.router.navigate(['/add']);
   }

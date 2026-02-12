@@ -78,3 +78,17 @@ export const uploadPicture$ = createEffect(
     ),
   { functional: true },
 );
+
+export const loadDrinkDetail$ = createEffect(
+  (actions$ = inject(Actions), drinksService = inject(DrinksService)) =>
+    actions$.pipe(
+      ofType(DrinksActions.loadDrinkDetail),
+      switchMap(({ id }) =>
+        drinksService.getDrink(id).pipe(
+          map((drink) => DrinksActions.loadDrinkDetailSuccess({ drink })),
+          catchError((error) => of(DrinksActions.loadDrinkDetailFailure({ error: error.message }))),
+        ),
+      ),
+    ),
+  { functional: true },
+);
