@@ -3,3 +3,9 @@
   background: rgba(0, 0, 0, 0.06);
   margin: 20px 0;
 }
+
+@mixin error {
+    text-align: center;
+  color: var(--mat-sys-error);
+  padding: 24px;
+}

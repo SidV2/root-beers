@@ -36,3 +36,10 @@ body {
   height: 100%;
 }
 /* You can add global styles to this file, and also import other style files */
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+  .mat-mdc-dialog-container .mat-mdc-dialog-title+.mat-mdc-dialog-content {
+    padding-top: 20px;
+  }
+}

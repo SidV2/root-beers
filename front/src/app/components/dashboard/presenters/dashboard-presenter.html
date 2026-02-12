@@ -22,18 +22,14 @@
         <p>No drinks found.</p>
       }
     </div>
+    <div class="button-wrappers">
+      <ng-container [ngTemplateOutlet]="addBearButtonTmpl" />
+      @if(totalNoOfDrinks && totalNoOfDrinks > pageNumber() * 10) {
+        <ng-container [ngTemplateOutlet]="showMoreBtnTempl" />
+      }
+    </div>
   }
-
-  <div class="button-wrappers">
-    <ng-container [ngTemplateOutlet]="addBearButtonTmpl" />
-    @if(totalNoOfDrinks && totalNoOfDrinks > pageNumber() * 10) {
-      <ng-container [ngTemplateOutlet]="showMoreBtnTempl" />
-    }
-  </div>
-
 </div>
-
-
 
 <!--Ng templates -->
 <ng-template #loadingTmpl>
@@ -45,7 +41,7 @@
 
 <ng-template #errorTmpl>
   <div class="error">
-    <p>{{ error() }}</p>
+    <p>Failed to fetch data from back end services. Please try again later.</p>
   </div>
 </ng-template>
 
