@@ -4,20 +4,26 @@
   </div>
 } @else if (drink(); as d) {
   <div class="detail-page">
-    <button mat-button (click)="goBack.emit()">
+    <button mat-button class="back-btn" (click)="goBack.emit()">
       <mat-icon>arrow_back</mat-icon> Back
     </button>
 
-    @if (d.Pictures && d.Pictures.length) {
-      <app-carousel [pictures]="d.Pictures" />
-    }
+    <div class="detail-card">
+      @if (d.Pictures && d.Pictures.length) {
+        <div class="carousel-section">
+          <app-carousel [pictures]="d.Pictures" />
+        </div>
+      }
 
-    <div class="detail-content">
-      <h1>{{ d.name }}</h1>
-      <p class="rating">
-        {{ d.reviewAverageRating | number: '1.1-1' }} ★ · {{ d.reviewCount }} reviews
-      </p>
-      <p class="description">{{ d.description }}</p>
+      <div class="detail-content">
+        <h1 class="drink-name">{{ d.name }}</h1>
+        <div class="meta">
+          <span class="rating-badge">{{ d.reviewAverageRating | number: '1.1-1' }} ★</span>
+          <span class="review-count">{{ d.reviewCount }} reviews</span>
+        </div>
+        <div class="divider"></div>
+        <p class="description">{{ d.description }}</p>
+      </div>
     </div>
   </div>
 }

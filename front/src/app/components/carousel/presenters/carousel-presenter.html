@@ -3,7 +3,7 @@
     <div class="carousel-viewport">
       <img [src]="currentImage().src" [alt]="currentImage().alt" />
     </div>
-
+    <div class="divider"></div>
     @if (images().length > 1) {
       <div class="carousel-controls">
         <button mat-icon-button (click)="prev()" [disabled]="!hasPrev()">
