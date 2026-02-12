@@ -5,6 +5,9 @@
     <mat-form-field appearance="outline">
       <mat-label>Your Name</mat-label>
       <input matInput formControlName="user_name" placeholder="e.g. John Doe" />
+      @if(form.get('user_name')?.invalid) {
+        <mat-error>Name is invalid</mat-error>
+      }
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -15,6 +18,9 @@
         rows="4"
         placeholder="What did you think?"
       ></textarea>
+      @if(form.get('description')?.invalid) {
+        <mat-error>Review description is invalid</mat-error>
+      }
     </mat-form-field>
 
     <mat-form-field appearance="outline">

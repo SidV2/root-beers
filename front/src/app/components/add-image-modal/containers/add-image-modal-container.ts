@@ -24,8 +24,8 @@ export class AddImageModalContainer {
     this.dialogRef.close();
   }
 
-  onSubmit(value: AddImageFormValue): void {
-    this.store.dispatch(DrinksActions.uploadPicture({ drinkId: this.data.drinkId, file: value.file }));
+  onSubmit(file: File): void {
+    this.store.dispatch(DrinksActions.uploadPicture({ drinkId: this.data.drinkId, file }));
     this.dialogRef.close();
   }
 }

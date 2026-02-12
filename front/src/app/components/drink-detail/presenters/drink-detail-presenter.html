@@ -27,8 +27,11 @@
       </div>
     </div>
 
-    <div class="reviews-section">
-      <app-review-list [drinkId]="drinkValue.id" />
-    </div>
+    @if(drinkValue) {
+      <div class="reviews-section">
+        <app-review-list [drinkId]="drinkValue.id" />
+      </div>
+    }
+
   </div>
 }

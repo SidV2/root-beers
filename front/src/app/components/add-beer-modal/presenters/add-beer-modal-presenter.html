@@ -5,6 +5,10 @@
     <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
       <input matInput formControlName="name" placeholder="e.g. Barq's Root Beer" />
+      @if(addBeerForm.get('name')?.invalid) {
+        <mat-error>Name is invalid</mat-error>
+      }
+      
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -15,6 +19,9 @@
         rows="4"
         placeholder="Describe the root beer..."
       ></textarea>
+      @if(addBeerForm.get('description')?.invalid) {
+        <mat-error>Description is invalid</mat-error>
+      }
     </mat-form-field>
   </form>
 

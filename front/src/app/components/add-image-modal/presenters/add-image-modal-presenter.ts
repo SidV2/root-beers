@@ -18,13 +18,9 @@ export class AddImageModalPresenter {
   private readonly fb = inject(FormBuilder);
 
   cancel = output<void>();
-  submitImage = output<AddImageFormValue>();
+  submitImage = output<File>();
 
   selectedFile = signal<File | null>(null);
-
-  form = this.fb.group({
-    name: ['', Validators.required],
-  });
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -43,8 +39,8 @@ export class AddImageModalPresenter {
 
   onSubmit(): void {
     const file = this.selectedFile();
-    if (this.form.valid && file) {
-      this.submitImage.emit({ name: this.form.getRawValue().name!, file });
+    if (file) {
+      this.submitImage.emit(file);
     }
   }
 }
