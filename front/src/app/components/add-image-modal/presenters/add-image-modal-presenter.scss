@@ -1,9 +1,19 @@
-.upload-area {
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   min-width: 400px;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.upload-area {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px 0;
+  padding: 16px 0;
 }
 
 .selected-file {

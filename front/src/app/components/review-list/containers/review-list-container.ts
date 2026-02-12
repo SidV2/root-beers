@@ -1,8 +1,8 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { DrinksActions } from '../../dashboard/store/drinks.actions';
-import { selectReviews, selectReviewsLoading, selectReviewsTotal } from '../../dashboard/store/drinks.selectors';
+import { DrinksActions } from '../../../store/drinks.actions';
+import { selectReviews, selectReviewsLoading, selectReviewsTotal } from '../../../store/drinks.selectors';
 import { ReviewListPresenter } from '../presenters/review-list-presenter';
 
 @Component({

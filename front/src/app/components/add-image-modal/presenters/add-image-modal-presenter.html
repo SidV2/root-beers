@@ -1,28 +1,35 @@
 <h2 mat-dialog-title>Upload Image</h2>
 
 <mat-dialog-content>
-  <div class="upload-area">
-    @let file = selectedFile();
-    @if (file) {
-      <div class="selected-file">
-        <span>{{ file.name }}</span>
-        <button mat-icon-button (click)="removeFile()">
-          <mat-icon>close</mat-icon>
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Image Name</mat-label>
+      <input matInput formControlName="name" placeholder="e.g. Front label" />
+    </mat-form-field>
+
+    <div class="upload-area">
+      @let file = selectedFile();
+      @if (file) {
+        <div class="selected-file">
+          <span>{{ file.name }}</span>
+          <button mat-icon-button (click)="removeFile()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      } @else {
+        <button mat-stroked-button (click)="fileInput.click()">
+          <mat-icon>upload</mat-icon>
+          Choose File
         </button>
-      </div>
-    } @else {
-      <button mat-stroked-button (click)="fileInput.click()">
-        <mat-icon>upload</mat-icon>
-        Choose File
-      </button>
-      <input #fileInput type="file" hidden accept="image/*" (change)="onFileSelected($event)" />
-    }
-  </div>
+        <input #fileInput type="file" hidden accept="image/*" (change)="onFileSelected($event)" />
+      }
+    </div>
+  </form>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
   <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="!selectedFile()">
+  <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="form.invalid || !selectedFile()">
     Upload Image
   </button>
 </mat-dialog-actions>

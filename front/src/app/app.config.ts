@@ -7,8 +7,8 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
-import { drinksFeature } from './components/dashboard/store/drinks.reducer';
-import * as DrinksEffects from './components/dashboard/store/drinks.effects';
+import { drinksFeature } from './store/drinks.reducer';
+import * as DrinksEffects from './store/drinks.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [

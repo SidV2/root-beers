@@ -2,8 +2,8 @@ import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { DrinksActions } from '../../dashboard/store/drinks.actions';
-import { selectSelectedDrink, selectDetailLoading } from '../../dashboard/store/drinks.selectors';
+import { DrinksActions } from '../../../store/drinks.actions';
+import { selectSelectedDrink, selectDetailLoading } from '../../../store/drinks.selectors';
 import { DrinkDetailPresenter } from '../presenters/drink-detail-presenter';
 
 @Component({

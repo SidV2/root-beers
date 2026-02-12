@@ -1,5 +1,5 @@
 import { createActionGroup, props } from '@ngrx/store';
-import { Drink, DrinkQueryParams, Review, Picture } from '../../../models/drink.model';
+import { Drink, DrinkQueryParams, Review, Picture } from '../models/drink.model';
 
 export const DrinksActions = createActionGroup({
   source: 'Drinks',

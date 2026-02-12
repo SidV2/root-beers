@@ -19,4 +19,8 @@ export class DrinkDetailPresenter {
   loading = input<boolean>(true);
 
   goBack = output<void>();
+
+  goBackHandler() {
+    this.goBack.emit()
+  }
 }

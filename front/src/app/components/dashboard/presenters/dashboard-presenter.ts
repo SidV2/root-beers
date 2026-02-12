@@ -25,12 +25,20 @@ export class DashboardPresenter {
   viewDetailEvent = output<number>();
   fetchMoreResultsEvent = output<void>();
 
-  public ngOnInit() {
-    console.log(this);
-  }
-
   openAddBeerDialog() {
     this.openAddBeerDialogEvent.emit();
+  }
+
+  addReview(drinkId: number) {
+    this.addReviewEvent.emit(drinkId);
+  }
+
+  addImage(drinkId: number) {
+    this.addImageEvent.emit(drinkId);
+  }
+
+  viewDetail(drinkId: number) {
+    this.viewDetailEvent.emit(drinkId);
   }
 
   fetchMoreResults() {

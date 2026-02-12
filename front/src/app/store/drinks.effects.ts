@@ -2,7 +2,7 @@ import { inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { DrinksService } from '../../../services/drinks.service';
+import { DrinksService } from '../services/drinks.service';
 import { DrinksActions } from './drinks.actions';
 
 export const loadDrinks$ = createEffect(

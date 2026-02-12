@@ -1,5 +1,5 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { Drink, Review } from '../../../models/drink.model';
+import { Drink, Review } from '../models/drink.model';
 import { DrinksActions } from './drinks.actions';
 
 export interface DrinksState {
@@ -116,10 +116,10 @@ export const drinksFeature = createFeature({
     })),
     on(DrinksActions.uploadPictureSuccess, (state, { drinkId, picture }) => ({
       ...state,
-      drinks: state.drinks.map((d) =>
-        d.id === drinkId
-          ? { ...d, Pictures: [...d.Pictures, picture] }
-          : d,
+      drinks: state.drinks.map((drink) =>
+        drink.id === drinkId
+          ? { ...drink, Pictures: [...drink.Pictures, picture] }
+          : drink,
       ),
     })),
     on(DrinksActions.uploadPictureFailure, (state, { error }) => ({

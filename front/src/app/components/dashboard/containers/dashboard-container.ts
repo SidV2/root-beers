@@ -3,13 +3,13 @@ import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/cor
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { DrinksActions } from '../store/drinks.actions';
+import { DrinksActions } from '../../../store/drinks.actions';
 import {
   selectDrinks,
   selectDrinksLoading,
   selectDrinksError,
   selectDrinksTotal,
-} from '../store/drinks.selectors';
+} from '../../../store/drinks.selectors';
 import { AddReviewModalContainer } from '../../add-review-modal/containers/add-review-modal-container';
 import { AddImageModalContainer } from '../../add-image-modal/containers/add-image-modal-container';
 import { DashboardPresenter } from '../presenters/dashboard-presenter';

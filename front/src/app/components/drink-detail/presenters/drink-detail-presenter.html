@@ -1,12 +1,11 @@
 @let drinkValue = drink();
 @if (loading()) {
-  
   <div class="loading">
     <mat-spinner diameter="48" />
   </div>
 } @else if (drinkValue) {
   <div class="detail-page">
-    <button mat-button class="back-btn" (click)="goBack.emit()">
+    <button mat-button class="back-btn" (click)="goBackHandler()">
       <mat-icon>arrow_back</mat-icon> Back
     </button>
 

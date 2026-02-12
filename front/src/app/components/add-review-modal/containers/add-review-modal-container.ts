@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { DrinksActions } from '../../dashboard/store/drinks.actions';
+import { DrinksActions } from '../../../store/drinks.actions';
 import { AddReviewModalPresenter, AddReviewFormValue } from '../presenters/add-review-modal-presenter';
 
 export interface AddReviewDialogData {

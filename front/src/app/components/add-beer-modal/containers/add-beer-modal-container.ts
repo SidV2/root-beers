@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { DrinksActions } from '../../dashboard/store/drinks.actions';
+import { DrinksActions } from '../../../store/drinks.actions';
 import { AddBeerModalPresenter } from '../presenters/add-beer-modal-presenter';
 import { AddBeerFormValue } from '../presenters/add-beer.config';
 

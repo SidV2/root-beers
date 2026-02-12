@@ -14,9 +14,9 @@
       @for (drink of drinkItems; track drink.id) {
         <app-beer-card
           [drink]="drink"
-          (addReview)="addReviewEvent.emit($event)"
-          (addImage)="addImageEvent.emit($event)"
-          (viewDetail)="viewDetailEvent.emit($event)"
+          (addReview)="addReview($event)"
+          (addImage)="addImage($event)"
+          (viewDetail)="viewDetail($event)"
         />
       } @empty {
         <p>No drinks found.</p>

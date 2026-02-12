@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { DrinksActions } from '../../dashboard/store/drinks.actions';
+import { DrinksActions } from '../../../store/drinks.actions';
 import { AddImageModalPresenter } from '../presenters/add-image-modal-presenter';
+import { AddImageFormValue } from '../presenters/add-image-config';
 
 export interface AddImageDialogData {
   drinkId: number;
@@ -23,8 +24,8 @@ export class AddImageModalContainer {
     this.dialogRef.close();
   }
 
-  onSubmit(file: File): void {
-    this.store.dispatch(DrinksActions.uploadPicture({ drinkId: this.data.drinkId, file }));
+  onSubmit(value: AddImageFormValue): void {
+    this.store.dispatch(DrinksActions.uploadPicture({ drinkId: this.data.drinkId, file: value.file }));
     this.dialogRef.close();
   }
 }
