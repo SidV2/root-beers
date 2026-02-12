@@ -3,6 +3,13 @@
   <div class="loading">
     <mat-spinner diameter="48" />
   </div>
+} @else if (error()) {
+  <div class="error">
+    <button mat-button class="back-btn" (click)="goBackHandler()">
+      <mat-icon>arrow_back</mat-icon> Back
+    </button>
+    <p>Failed to load drink detail from API services. Please try again later.</p>
+  </div>
 } @else if (drinkValue) {
   <div class="detail-page">
     <button mat-button class="back-btn" (click)="goBackHandler()">

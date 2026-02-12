@@ -1,4 +1,4 @@
-@use './../../../mixins.scss' as carousel;
+@use './../../../mixins.scss' as *;
 
 .loading {
   display: flex;
@@ -57,7 +57,7 @@
   }
 
   .divider {
-    @include carousel.divider;
+    @include divider;
   }
 
   .description {
@@ -72,4 +72,8 @@
     margin-top: 30px;
     padding-top: 24px;
   }
+}
+
+.error {
+  @include error;
 }

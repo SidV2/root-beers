@@ -2,6 +2,10 @@
   <div class="loading">
     <mat-spinner diameter="32" />
   </div>
+} @else if (error()) {
+  <div class="review-error">
+    <p>Failed to load reviews from API services. Please try again later</p>
+  </div>
 } @else {
   <div class="review-list">
     <h2 class="section-title">Reviews</h2>

@@ -10,24 +10,14 @@ export const DrinksActions = createActionGroup({
     'Load More Drinks': props<{ query?: DrinkQueryParams }>(),
     'Load More Drinks Success': props<{ drinks: Drink[]; total: number }>(),
 
-    'Load Drink Detail': props<{ id: number }>(),
-    'Load Drink Detail Success': props<{ drink: Drink }>(),
-    'Load Drink Detail Failure': props<{ error: string }>(),
-
     'Add Drink': props<{ drink: Partial<Drink> }>(),
     'Add Drink Success': props<{ drink: Drink }>(),
     'Add Drink Failure': props<{ error: string }>(),
 
-    'Load Reviews': props<{ drinkId: number; offset: number; length: number }>(),
-    'Load Reviews Success': props<{ reviews: Review[]; total: number }>(),
-    'Load Reviews Failure': props<{ error: string }>(),
-    'Load More Reviews': props<{ drinkId: number; offset: number; length: number }>(),
-    'Load More Reviews Success': props<{ reviews: Review[]; total: number }>(),
-
     'Add Review': props<{ drinkId: number; review: Partial<Review> }>(),
     'Add Review Success': props<{ drinkId: number; review: Review }>(),
     'Add Review Failure': props<{ error: string }>(),
-    
+
     'Upload Picture': props<{ drinkId: number; file: File }>(),
     'Upload Picture Success': props<{ drinkId: number; picture: Picture }>(),
     'Upload Picture Failure': props<{ error: string }>(),

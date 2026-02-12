@@ -2,6 +2,7 @@
   [reviews]="(reviews$ | async) ?? []"
   [total]="(total$ | async) ?? 0"
   [loading]="(loading$ | async) ?? true"
+  [error]="error$ | async"
   [pageNumber]="pageNumber"
   (fetchMoreReviewsEvent)="fetchMoreReviews()"
 />

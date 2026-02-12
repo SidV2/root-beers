@@ -17,6 +17,7 @@ import { ReviewListContainer } from '../../review-list/containers/review-list-co
 export class DrinkDetailPresenter {
   drink = input<Drink | null>(null);
   loading = input<boolean>(true);
+  error = input<string | null>(null);
 
   goBack = output<void>();
 

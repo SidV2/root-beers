@@ -1,5 +1,5 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { Drink, Review } from '../models/drink.model';
+import { Drink } from '../models/drink.model';
 import { DrinksActions } from './drinks.actions';
 
 export interface DrinksState {
@@ -7,11 +7,6 @@ export interface DrinksState {
   total: number;
   loading: boolean;
   error: string | null;
-  selectedDrink: Drink | null;
-  detailLoading: boolean;
-  reviews: Review[];
-  reviewsTotal: number;
-  reviewsLoading: boolean;
 }
 
 export const initialState: DrinksState = {
@@ -19,11 +14,6 @@ export const initialState: DrinksState = {
   total: 0,
   loading: false,
   error: null,
-  selectedDrink: null,
-  detailLoading: false,
-  reviews: [],
-  reviewsTotal: 0,
-  reviewsLoading: false,
 };
 
 export const drinksFeature = createFeature({
@@ -56,59 +46,17 @@ export const drinksFeature = createFeature({
       total,
       loading: false,
     })),
-    on(DrinksActions.loadDrinkDetail, (state) => ({
+    on(DrinksActions.addDrinkFailure, (state, { error }) => ({
       ...state,
-      selectedDrink: null,
-      detailLoading: true,
-      error: null,
-    })),
-    on(DrinksActions.loadDrinkDetailSuccess, (state, { drink }) => ({
-      ...state,
-      selectedDrink: drink,
-      detailLoading: false,
-    })),
-    on(DrinksActions.loadDrinkDetailFailure, (state, { error }) => ({
-      ...state,
-      detailLoading: false,
       error,
     })),
-    on(DrinksActions.loadReviews, (state) => ({
+    on(DrinksActions.addReviewSuccess, (state, { drinkId }) => ({
       ...state,
-      reviews: [],
-      reviewsLoading: true,
-    })),
-    on(DrinksActions.loadReviewsSuccess, (state, { reviews, total }) => ({
-      ...state,
-      reviews,
-      reviewsTotal: total,
-      reviewsLoading: false,
-    })),
-    on(DrinksActions.loadReviewsFailure, (state, { error }) => ({
-      ...state,
-      reviewsLoading: false,
-      error,
-    })),
-    on(DrinksActions.loadMoreReviews, (state) => ({
-      ...state,
-      error: null,
-    })),
-    on(DrinksActions.loadMoreReviewsSuccess, (state, { reviews, total }) => ({
-      ...state,
-      reviews: [...state.reviews, ...reviews],
-      reviewsTotal: total,
-    })),
-    on(DrinksActions.addReviewSuccess, (state, { drinkId, review }) => ({
-      ...state,
-      reviews: [review, ...state.reviews],
       drinks: state.drinks.map((drink) =>
         drink.id === drinkId
           ? { ...drink, reviewCount: drink.reviewCount + 1 }
           : drink,
       ),
-    })),
-    on(DrinksActions.addDrinkFailure, (state, { error }) => ({
-      ...state,
-      error,
     })),
     on(DrinksActions.addReviewFailure, (state, { error }) => ({
       ...state,

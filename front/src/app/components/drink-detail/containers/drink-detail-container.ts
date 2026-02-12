@@ -2,8 +2,8 @@ import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { DrinksActions } from '../../../store/drinks.actions';
-import { selectSelectedDrink, selectDetailLoading } from '../../../store/drinks.selectors';
+import { DetailActions } from '../../../store/detail/detail.actions';
+import { selectSelectedDrink, selectDetailLoading, selectDetailError } from '../../../store/detail/detail.selectors';
 import { DrinkDetailPresenter } from '../presenters/drink-detail-presenter';
 
 @Component({
@@ -19,10 +19,11 @@ export class DrinkDetailContainer implements OnInit {
 
   drink$ = this.store.select(selectSelectedDrink);
   loading$ = this.store.select(selectDetailLoading);
+  error$ = this.store.select(selectDetailError);
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.store.dispatch(DrinksActions.loadDrinkDetail({ id }));
+    this.store.dispatch(DetailActions.loadDrinkDetail({ id }));
   }
 
   goBack(): void {

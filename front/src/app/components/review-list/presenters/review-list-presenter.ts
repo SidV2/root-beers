@@ -16,6 +16,7 @@ export class ReviewListPresenter {
   reviews = input<Review[]>([]);
   total = input<number>(0);
   loading = input<boolean>(true);
+  error = input<string | null>(null);
   pageNumber = input<number>(1);
 
   fetchMoreReviewsEvent = output<void>();

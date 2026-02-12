@@ -1,22 +1,16 @@
-import { ChangeDetectionStrategy, Component, inject, output, signal } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, output, signal } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { AddImageFormValue } from './add-image-config';
 
 @Component({
   selector: 'app-add-image-modal-presenter',
-  imports: [ReactiveFormsModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule],
+  imports: [MatDialogModule, MatButtonModule, MatIconModule],
   templateUrl: './add-image-modal-presenter.html',
   styleUrl: './add-image-modal-presenter.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddImageModalPresenter {
-  private readonly fb = inject(FormBuilder);
-
   cancel = output<void>();
   submitImage = output<File>();
 

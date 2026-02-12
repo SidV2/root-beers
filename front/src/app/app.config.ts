@@ -8,7 +8,11 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
 import { drinksFeature } from './store/drinks.reducer';
+import { detailFeature } from './store/detail/detail.reducer';
+import { reviewFeature } from './store/review/review.reducer';
 import * as DrinksEffects from './store/drinks.effects';
+import * as DetailEffects from './store/detail/detail.effects';
+import * as ReviewEffects from './store/review/review.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,8 +20,12 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideHttpClient(),
     provideRouter(routes),
-    provideStore({ [drinksFeature.name]: drinksFeature.reducer }),
-    provideEffects(DrinksEffects),
+    provideStore({
+      [drinksFeature.name]: drinksFeature.reducer,
+      [detailFeature.name]: detailFeature.reducer,
+      [reviewFeature.name]: reviewFeature.reducer,
+    }),
+    provideEffects(DrinksEffects, DetailEffects, ReviewEffects),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
   ],
 };
